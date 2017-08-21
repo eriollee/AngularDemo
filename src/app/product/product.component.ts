@@ -22,6 +22,10 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.products = this.productSerice.getProducts();
+
+    this.productSerice.searchEvent.subscribe(
+      params => this.products = this.productSerice.search(params)
+    );
   }
 
 }
