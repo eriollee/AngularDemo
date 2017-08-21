@@ -23,8 +23,13 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
   	let productId:number = this.routeInfo.snapshot.params["prodId"];
-  	this.product = this.productService.getProductId(productId);
-  	this.comments = this.productService.getCommentsForProductId(productId);
+
+    this.productService.getProductId(productId).subscribe(
+        product => this.product = product
+     );
+    this.productService.getCommentsForProductId(productId).subscribe(
+        comments => this.comments = comments
+     );
   }
 
   
