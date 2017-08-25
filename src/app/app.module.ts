@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HashLocationStrategy,LocationStrategy } from '@angular/common';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -45,7 +46,8 @@ const routeConfig:Routes = [
     RouterModule.forRoot(routeConfig),
     ReactiveFormsModule
   ],
-  providers: [ProductService,WebSocketService],
+  providers: [ProductService,WebSocketService,
+  {provide:LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
